@@ -10,7 +10,7 @@ package:
 source:
   fn: 0.1.13.tar.gz
   url: https://github.com/dpryan79/PileOMeth/archive/0.1.13.tar.gz
-  sha256: 96a8a271f61bedaa4adcdbe6731a7d993a6289920f3a772547b8c67dc3410197
+  sha256: 9f70f847223ebf3bd074553928a4097fa9a6db5cdc5e7632b2062c96edb3c6a8
 
 build:
   number: 1
@@ -18,6 +18,9 @@ build:
 requirements:
   build:
     - gcc   # [linux]
+    - zlib
+  run:
+    - zlib
 
 test:
   commands:
