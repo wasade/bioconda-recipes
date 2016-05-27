@@ -24,4 +24,4 @@ requirements:
 
 test:
   commands:
-    - cd tests && python ./test.py
+    - PileOMeth --version
