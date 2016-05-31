@@ -2,7 +2,7 @@
 
 set -e -x -o pipefail
 
-DESTDIR=$PREFIX/opt/tbl2asn-$PKG_VERSION
+DESTDIR=$PREFIX/opt/$PKG_NAME-$PKG_VERSION
 
 cd $SRC_DIR/
 
