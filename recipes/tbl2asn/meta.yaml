@@ -23,7 +23,7 @@ requirements:
     - "libgcc"
 test:
     commands:
-        - "tbl2asn --help &> /dev/null"
+        - "tbl2asn --help" #&> /dev/null"
 about:
     home: ftp://ftp.ncbi.nih.gov/toolbox/ncbi_tools/converters/by_program/tbl2asn/
     license: Public Domain
