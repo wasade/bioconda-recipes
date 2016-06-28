@@ -1,0 +1,35 @@
+package:
+  name: r-stringr
+  # Note that conda versions cannot contain -, so any -'s in the version have
+  # been replaced with _'s.
+  version: "1.0.0"
+
+source:
+  fn: stringr_1.0.0.tar.gz
+  url:
+    - https://cran.r-project.org/src/contrib/stringr_1.0.0.tar.gz
+
+build:
+
+  # This is required to make R link correctly on Linux.
+  rpaths:
+    - lib/R/lib/
+    - lib/
+
+requirements:
+  build:
+    - r
+
+  run:
+    - r
+
+test:
+  commands:
+    # You can put additional test commands to be run here.
+    - $R -e "library('stringr')" # [not win]
+    - "\"%R%\" -e \"library('stringr')\"" # [win]
+
+about:
+  home: https://cran.r-project.org/web/packages/stringr/index.html
+  license: GPL-2
+  summary: A consistent, simple and easy to use set of wrappers around the fantastic 'stringi' package. All function and argument names (and positions) are consistent, all functions deal with "NA"'s and zero length vectors in the same way, and the output from one function is easy to feed into the input of another.
