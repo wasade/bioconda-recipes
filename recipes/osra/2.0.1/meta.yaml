@@ -4,6 +4,7 @@ package:
 build:
   number: 1
   skip: True # [osx]
+  string: "graphicsmagick{{ CONDA_GRAPHICSMAGICK }}_{{PKG_BUILDNUM}}"
 source:
   fn: osra-2.0.1.tgz
   url: http://downloads.sourceforge.net/project/osra/osra/2.0.1/osra-2.0.1.tgz
@@ -12,14 +13,14 @@ requirements:
     - gcc       # [linux]
     - llvm      # [osx]
     - openbabel
-    - graphicsmagick
+    - graphicsmagick {{ CONDA_GRAPHICSMAGICK }}
     - tesseract
     - potrace
     - tclap
     - gocr
     - ocrad
   run:
-    - graphicsmagick
+    - graphicsmagick {{ CONDA_GRAPHICSMAGICK }}
     - openbabel
     - tesseract
     - potrace
@@ -31,5 +32,5 @@ test:
     - osra --help
 about:
   home: http://cactus.nci.nih.gov/osra/
-  license: Simplified BSD Licence 
+  license: Simplified BSD Licence
   summary: OSRA is a utility designed to convert graphical representations of chemical structures, as they appear in journal articles, patent documents, textbooks, trade magazines etc., into SMILES or SDF.
