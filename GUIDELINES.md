@@ -78,7 +78,7 @@ mimics the installation pattern of gatk-framework.
 JAR files should go in `$PREFIX/share/$PKG_NAME-$PKG_VERSION-$PKG_BUILDNUM`.
 A wrapper script should be placed here as well, and symlinked to `$PREFIX/bin`.
 
-Example: [gatk-framework](recipes/gatk-framework)
+Example: [peptide-shaker](recipes/peptide-shaker)
 Example with patch to fix memory: [fastqc](recipes/fastqc)
 
 ### Perl
