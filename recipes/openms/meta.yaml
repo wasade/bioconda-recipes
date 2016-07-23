@@ -15,7 +15,20 @@ requirements:
     - autoconf
     - automake
     - libtool
+    - python
+    - zlib
+    - icu
+    - xerces-c
+    - gsl
+    - boost <1.60.0
+    - eigen
+    - glpk
+    - bzip2
+    - qt
   run:
+    - python
+    ##- zlib
+    ##- boost <1.60.0
     
 test:
   commands:
