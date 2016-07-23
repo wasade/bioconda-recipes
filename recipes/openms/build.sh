@@ -1,6 +1,6 @@
 #!/bin/sh
 
-sed -i.bak s/1.48.0/1.57.0/ ./cmake/build_system_macros.cmake
+
 
 cd contrib
 
@@ -36,12 +36,10 @@ cmake . -DBUILD_TYPE=SEQAN
 #cmake . -DBUILD_TYPE=BOOST -DNUMBER_OF_JOBS=4
 cd ..
 
-cat ./cmake/build_system_macros.cmake
-
 mkdir build
 cd build
 ORIGIN='$ORIGIN'
 export ORIGIN
 LDFLAGS='-Wl,-rpath,$${ORIGIN}/../lib' cmake .. -DCMAKE_INSTALL_PREFIX=$PREFIX -DHAS_XSERVER=OFF -DENABLE_TUTORIALS=OFF -DENABLE_STYLE_TESTING=OFF -DENABLE_UNITYBUILD=OFF -DWITH_GUI=OFF -DBoost_INCLUDE_DIR=$PREFIX/include -DBoost_LIBRARY_DIRS=$PREFIX/lib -DBoost_LIBRARIES=$PREFIX/lib -DBoost_LIB_VERSION=1.57.0 -DBoost_DEBUG=ON -DBOOST_LIBRARYDIR=$PREFIX/lib/ -DBOOST_USE_STATIC=OFF -DNUMBER_OF_JOBS=4
-make OpenMS TOPP UTILS
+make OpenMS ##TOPP UTILS
 make install
