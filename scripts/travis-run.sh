@@ -4,7 +4,7 @@ set -euo pipefail
 if [[ $TRAVIS_OS_NAME = "linux" ]]
 then
 
-    bioconda-utils build . config.yml --docker
+    /anaconda/bin/bioconda-utils build . config.yml --docker
 
     if [[ $SUBDAG = 0 ]]
     then
@@ -16,6 +16,6 @@ then
     fi
 else
 
-    bioconda-utils build . config.yml
+    /anaconda/bin/bioconda-utils build . config.yml
 
 fi
