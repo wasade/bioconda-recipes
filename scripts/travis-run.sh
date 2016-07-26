@@ -1,10 +1,12 @@
 #!/bin/bash
 set -euo pipefail
 
+export PATH=/anaconda/bin:$PATH
+
 if [[ $TRAVIS_OS_NAME = "linux" ]]
 then
 
-    /anaconda/bin/bioconda-utils build . config.yml --docker
+    bioconda-utils build . config.yml --docker
 
     if [[ $SUBDAG = 0 ]]
     then
@@ -16,6 +18,6 @@ then
     fi
 else
 
-    /anaconda/bin/bioconda-utils build . config.yml
+    bioconda-utils build . config.yml
 
 fi
