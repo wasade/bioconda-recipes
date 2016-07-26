@@ -1,14 +1,13 @@
 #!/bin/bash
-set -e
+set -euo pipefail
 
 SCRIPT_DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 
-if [[ $TRAVIS_OS_NAME = "linux" ]]
-then
-    docker pull bioconda/bioconda-builder
-else
+git clone https://github.com/bioconda/bioconda-utils.git
+(cd bioconda-utils && python setup.py install)
 
-    # install conda
+if [[ $TRAVIS_OS_NAME != "linux" ]]
+then
     curl -O https://repo.continuum.io/miniconda/Miniconda3-latest-MacOSX-x86_64.sh
     sudo bash Miniconda3-latest-MacOSX-x86_64.sh -b -p /anaconda
     sudo chown -R $USER /anaconda
@@ -22,4 +21,5 @@ else
     conda config --add channels bioconda
     conda config --add channels r
     conda config --add channels file://anaconda/conda-bld
+
 fi
