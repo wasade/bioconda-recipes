@@ -15,7 +15,7 @@ sudo bash Miniconda3-latest-${tag}-x86_64.sh -b -p /anaconda
 sudo chown -R $USER /anaconda
 export PATH=/anaconda/bin:$PATH
 
-conda install --file scripts/requirements.txt
+conda install -y --file scripts/requirements.txt
 
 # Install bioconda-utils with miniconda version of python
 git clone https://github.com/bioconda/bioconda-utils.git
