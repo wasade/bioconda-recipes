@@ -3,19 +3,29 @@ set -euo pipefail
 
 SCRIPT_DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 
-# Set up python3 regardless of OS
-curl -O https://repo.continuum.io/miniconda/Miniconda3-latest-MacOSX-x86_64.sh
-sudo bash Miniconda3-latest-MacOSX-x86_64.sh -b -p /anaconda
+if [[ $TRAVIS_OS_NAME = "linux" ]]
+then
+    tag=Linux
+else
+    tag=MacOSX
+fi
+
+curl -O https://repo.continuum.io/miniconda/Miniconda3-latest-${tag}-x86_64.sh
+sudo bash Miniconda3-latest-${tag}-x86_64.sh -b -p /anaconda
 sudo chown -R $USER /anaconda
 export PATH=/anaconda/bin:$PATH
 
+# conda-build install complains about missing versioneer, so install ahead of
+# time
+pip install versioneer
+
+# Install bioconda-utils with miniconda version of python
 git clone https://github.com/bioconda/bioconda-utils.git
 (cd bioconda-utils && python setup.py install)
 
-if [[ $TRAVIS_OS_NAME = "linux" ]]
+
+if [[ $TRAVIS_OS_NAME != "linux" ]]
 then
-    (cd bioconda-utils && python setup.py install)
-else
     mkdir -p /anaconda/conda-bld/osx-64 # workaround for bug in current conda
     mkdir -p /anaconda/conda-bld/linux-64 # workaround for bug in current conda
     conda index /anaconda/conda-bld/linux-64 /anaconda/conda-bld/osx-64
