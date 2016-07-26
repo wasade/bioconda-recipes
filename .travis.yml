@@ -2,7 +2,6 @@ os:
 - linux
 - osx
 language: c
-python: "3.5"
 sudo: required
 services:
 - docker
