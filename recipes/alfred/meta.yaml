@@ -1,5 +1,5 @@
-{% set version = "0.1.12" %}
-{% set sha256 = "9e4702279aacb350eafe709925d7c2f651b5622b8fa1fb90d0c8320e1c093dbe" %}
+{% set version = "0.2.1" %}
+{% set sha256 = "7fd146ea4563b4f39d073d1e7fd3868ade06b2412db46b4dadafcd5208473daf" %}
 
 package:
   name: alfred
@@ -8,25 +8,22 @@ package:
 source:
   url: https://github.com/tobiasrausch/alfred/archive/v{{ version }}.tar.gz
   sha256: '{{ sha256 }}'
-  patches:
-    - Makefile.patch
 
 build:
-  number: 0
-  skip: true # [osx]
+  number: 1
 
 requirements:
   build:
-    - '{{ compiler("cxx") }}'
+    - {{ compiler('cxx') }}
   host:
     - zlib
     - bzip2
-    - boost
+    - boost-cpp
     - htslib
   run:
     - zlib
     - bzip2
-    - boost
+    - boost-cpp
     - htslib
 
 test:
@@ -35,6 +32,7 @@ test:
 
 about:
   home: https://github.com/tobiasrausch/alfred
-  license: GPL-3.0
-  license_family: GPL
-  summary: BAM statistics, feature counting and feature annotation
+  license: BSD License
+  license_family: BSD
+  license_file: LICENSE
+  summary: BAM alignment statistics, feature counting and feature annotation
