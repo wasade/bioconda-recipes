@@ -1,4 +1,4 @@
-{% set version = "0.23.0" %}
+{% set version = "1.11.2" %}
 
 package:
   name: nanocomp
@@ -6,27 +6,31 @@ package:
 
 source:
   url: https://pypi.io/packages/source/n/nanocomp/NanoComp-{{ version }}.tar.gz
-  sha256: df066590117afd92d49dadf5a268dc5b4dbb7e71333d8536c4c5960d6ee3b3e5
+  sha256: 023f8e211bbecf2be3b5475882c0e436d9f6e6b3e6461554312c8ff5005d6121
 
 build:
   entry_points:
     - NanoComp=nanocomp.NanoComp:main
-  number: 1
-  skip: True  # [py27]
+  number: 0
+  noarch: python
+  script: "{{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv"
 
 requirements:
   host:
-    - python
+    - python >=3
     - setuptools
 
   run:
-    - python
+    - python >=3
+    - pysam >=0.15
     - pandas
     - numpy
-    - nanoplotter >=1.0.0
-    - nanoget >=1.4.0
+    - nanoget >=1.12.0
     - nanomath >=0.15.3
-    - nanoplot >=1.17.3
+    - nanoplot >=1.28.1
+    - plotly >=4.1.1
+    - orca
+    - joypy
 
 test:
   imports:

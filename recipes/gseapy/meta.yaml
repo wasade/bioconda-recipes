@@ -1,38 +1,43 @@
 package:
   name: gseapy
-  version: "0.9.5"
+  version: "0.9.18"
 
 source:
-  url: https://files.pythonhosted.org/packages/f1/08/77fd8641e811f628cf9ba402c151b9242b52f2956543b9e7162e0f86da7e/gseapy-0.9.5.tar.gz
-  sha256: 1eb02f4056d089e26422105279546061629b8667307808297c3198d003b324b5
+  url: https://files.pythonhosted.org/packages/cc/24/64c0b22558f45d0e4fce026618096cd578208c54bba28ba9a29619a8f194/gseapy-0.9.18.tar.gz
+  sha256: 6c26a72ceeda9826c254f9ff19e5943f182b9a13d1c03613400ff5e800e398af
 
 build:
   noarch: python
   entry_points:
     - gseapy = gseapy.__main__:main
-  number: 1
+  number: 0
 
 requirements:
   host:
-    - python
+    - python >3
     - setuptools
     - numpy >=1.13.0
+    - scipy
     - pandas >=0.16
-    - matplotlib >=1.4.3
+    - matplotlib-base >=1.4.3
     - beautifulsoup4 >=4.4.1
     - requests
     - lxml
     - html5lib
-
+    - bioservices
+    - joblib
   run:
-    - python
+    - python >3
     - numpy >=1.13.0
+    - scipy
     - pandas >=0.16
-    - matplotlib >=1.4.3
+    - matplotlib-base >=1.4.3
     - beautifulsoup4 >=4.4.1
     - requests
     - lxml
     - html5lib
+    - bioservices
+    - joblib
 
 test:
   imports:
